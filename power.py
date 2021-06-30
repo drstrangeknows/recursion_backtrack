@@ -10,34 +10,48 @@ base case, then we if n is odd or even and simplify the return value accordingly
 2^3 can be put as 2 * 2^2 OR 2^5 can be put as 2*2^2*2^2 - thus we have x*result*result
 '''
 
-def main():
-    x = 21
-    n = -6
+# def main():
+#     x = 21
+#     n = -6
 
-    if n>0:
-        result = findPositive(x, n)
-    else:
-        result = findNegative(x, n)
+#     if n>0:
+#         result = findPositive(x, n)
+#     else:
+#         result = findNegative(x, n)
 
-    print("The result", result)
+#     print("The result", result)
 
-def findNegative(x, n):
-    if n==-1:
-        return 1/x
-    res = findNegative(x, n//2)
-    if n%2 == 0:
-        return 1/res * 1/res
-    else:
-        return 1/x * 1/res * 1/res
+# def findNegative(x, n):
+#     if n==-1:
+#         return 1/x
+#     res = findNegative(x, n//2)
+#     if n%2 == 0:
+#         return 1/res * 1/res
+#     else:
+#         return 1/x * 1/res * 1/res
 
-def findPositive(x, n):
-    if n==0:
-        return 1
-    res = findPositive(x, n//2)
-    if n%2 == 0:
-        return res * res
-    else:
-        return x * res * res
+# def findPositive(x, n):
+#     if n==0:
+#         return 1
+#     res = findPositive(x, n//2)
+#     if n%2 == 0:
+#         return res * res
+#     else:
+#         return x * res * res
 
-if __name__=='__main__':
-    main()
+# if __name__=='__main__':
+#     main()
+
+def power(x, y): 
+  
+    if(y == 0): return 1
+    temp = power(x, int(y / 2))  
+      
+    if (y % 2 == 0): #if y is even number 
+        return temp * temp 
+    else: 
+        if(y > 0): return x * temp * temp #if y is odd number
+        else: return (temp * temp) / x 
+      
+x, y = 2, -6
+print(power(x, y))
